@@ -4,10 +4,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap">
 <style>
-/* Concept: a quiet, product-led brand page in the spirit of a specialty coffee house.
-   Warm off-white ground, one soft blue accent used sparingly, large light type, generous
-   air, and very little copy per block. Images carry the atmosphere; words carry the meaning. */
+/* Concept: a quiet, light, product-led brand page in the spirit of a specialty coffee house.
+   Warm off-white ground, one soft blue accent used sparingly, large light type, generous air,
+   and abstract images about recovery in place of photographs. Deliberately light-only: the
+   page keeps its off-white ground on every device, including dark-mode phones. */
 :root {
+  color-scheme: light;
   --bg: #f7f6f3;
   --surface: #ffffff;
   --fg: #16191e;
@@ -16,37 +18,10 @@
   --accent: #2b6cb0;
   --accent-soft: #e9f1fa;
   --accent-fg: #ffffff;
-  --placeholder: #ebe9e4;
   --kakao: #fee500;
   --font: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --col: 640px;
   --wide: 1040px;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #101316;
-    --surface: #171b20;
-    --fg: #eceef1;
-    --muted: #9298a2;
-    --line: #262b32;
-    --accent: #8fb6e6;
-    --accent-soft: #1a2430;
-    --accent-fg: #101316;
-    --placeholder: #1d2227;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #101316;
-  --surface: #171b20;
-  --fg: #eceef1;
-  --muted: #9298a2;
-  --line: #262b32;
-  --accent: #8fb6e6;
-  --accent-soft: #1a2430;
-  --accent-fg: #101316;
-  --placeholder: #1d2227;
-  color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body {
@@ -72,8 +47,7 @@ a { color: var(--accent); }
   position: sticky;
   top: env(safe-area-inset-top, 0px);
   z-index: 5;
-  background: color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter: blur(6px);
+  background: var(--bg);
 }
 .top .wide {
   display: flex;
@@ -87,7 +61,7 @@ a { color: var(--accent); }
 .top nav a { color: var(--muted); text-decoration: none; font-size: 0.84rem; letter-spacing: 0.02em; }
 .top nav a:hover, .top nav a:focus-visible { color: var(--fg); }
 
-/* Hero: one line of meaning, one large image */
+/* Hero: one line of meaning, one quiet visual */
 .hero { padding-block: 72px 56px; }
 .eyebrow { margin: 0 0 28px; font-size: 0.78rem; letter-spacing: 0.12em; color: var(--muted); }
 .hero h1 {
@@ -99,17 +73,20 @@ a { color: var(--accent); }
   text-wrap: balance;
 }
 .hero .sub { margin: 0; color: var(--muted); max-width: 26em; }
-.image-band {
+.visual {
   margin-top: 56px;
   aspect-ratio: 16 / 9;
   max-width: 100%;
-  background: var(--placeholder);
   border-radius: 2px;
-  display: flex;
-  align-items: flex-end;
-  padding: 18px 20px;
-  color: var(--muted);
+  overflow: hidden;
+  background: var(--accent-soft);
+}
+.visual svg { display: block; width: 100%; height: 100%; }
+.visual figcaption {
+  margin-top: 12px;
   font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
 }
 
 /* Blocks: one idea each, separated by air rather than boxes */
@@ -136,18 +113,9 @@ section.block h2 {
 .voices li { font-size: 1.12rem; color: var(--fg); }
 .bridge { margin: 44px 0 0; font-size: 0.98rem; color: var(--muted); }
 
-/* About: image left, text right on wide screens */
+/* About: visual left, text right on wide screens */
 .about-grid { display: grid; gap: 40px; grid-template-columns: 1fr; align-items: start; }
-.portrait {
-  aspect-ratio: 4 / 5;
-  background: var(--placeholder);
-  border-radius: 2px;
-  display: flex;
-  align-items: flex-end;
-  padding: 16px;
-  color: var(--muted);
-  font-size: 0.8rem;
-}
+.about-grid .visual { margin-top: 0; aspect-ratio: 4 / 5; }
 .about p { margin: 0 0 18px; color: var(--fg); }
 .facts { margin: 40px 0 0; padding: 0; }
 .facts > div { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
@@ -162,7 +130,7 @@ section.block h2 {
 .principles h3 { margin: 0 0 8px; font-weight: 400; font-size: 1.05rem; }
 .principles p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 
-/* Self-check: light chips, no heavy boxes */
+/* Self-check: light rows, no heavy boxes */
 .check-intro { margin: 0 0 36px; color: var(--muted); font-size: 0.95rem; }
 .check-group { margin: 0 0 32px; }
 .check-group h3 { margin: 0 0 12px; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; color: var(--muted); }
@@ -249,7 +217,18 @@ footer p { margin: 0 0 8px; }
       <h1>검사에서는 괜찮다고 하는데,<br>몸과 마음은 왜 이렇게 힘들까요?</h1>
       <p class="sub">이유를 알 수 없는 피로, 불면, 소화불량. 그 이야기부터 천천히 듣겠습니다.</p>
     </div>
-    <div class="image-band" role="img" aria-label="진료실 사진 자리">진료실 사진 준비 중</div>
+    <figure class="visual col" style="max-width:var(--wide)">
+      <svg viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" role="img" aria-label="잔잔한 물결과 빛이 겹쳐진 추상 이미지">
+        <rect width="1200" height="675" fill="#e9f1fa"/>
+        <circle cx="620" cy="250" r="190" fill="#f7f6f3"/>
+        <circle cx="620" cy="250" r="260" fill="none" stroke="#2b6cb0" stroke-opacity="0.18" stroke-width="2"/>
+        <circle cx="620" cy="250" r="330" fill="none" stroke="#2b6cb0" stroke-opacity="0.10" stroke-width="2"/>
+        <path d="M0 430 C 200 370, 400 490, 600 430 S 1000 370, 1200 430 V675 H0Z" fill="#c9dcf1"/>
+        <path d="M0 500 C 240 450, 420 560, 620 510 S 1000 450, 1200 510 V675 H0Z" fill="#8fb6e6" fill-opacity="0.65"/>
+        <path d="M0 575 C 260 540, 460 620, 660 585 S 1020 540, 1200 580 V675 H0Z" fill="#2b6cb0" fill-opacity="0.35"/>
+      </svg>
+      <figcaption>회복</figcaption>
+    </figure>
   </div>
 
   <div class="col">
@@ -268,7 +247,17 @@ footer p { margin: 0 0 8px; }
     <section id="about" class="block">
       <span class="label">원장</span>
       <div class="about-grid">
-        <div class="portrait" role="img" aria-label="원장 사진 자리">원장 사진 준비 중</div>
+        <figure class="visual" style="margin:0">
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="동심원처럼 번지는 호흡을 표현한 추상 이미지">
+            <rect width="400" height="500" fill="#e9f1fa"/>
+            <circle cx="200" cy="250" r="40" fill="#2b6cb0" fill-opacity="0.55"/>
+            <circle cx="200" cy="250" r="80" fill="none" stroke="#2b6cb0" stroke-opacity="0.45" stroke-width="2"/>
+            <circle cx="200" cy="250" r="125" fill="none" stroke="#2b6cb0" stroke-opacity="0.3" stroke-width="2"/>
+            <circle cx="200" cy="250" r="175" fill="none" stroke="#2b6cb0" stroke-opacity="0.18" stroke-width="2"/>
+            <path d="M0 400 C 100 370, 300 430, 400 390 V500 H0Z" fill="#c9dcf1"/>
+          </svg>
+          <figcaption>호흡</figcaption>
+        </figure>
         <div class="about">
           <h2>윤성수</h2>
           <p>의사는 수치보다 사람을 먼저 봐야 한다고 생각합니다. 영화 <em>패치 아담스</em>를 보고 의료인의 길이 얼마나 사람과 가까운지 느꼈고, 그 마음으로 한의사가 되었습니다.</p>

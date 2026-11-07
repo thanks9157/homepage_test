@@ -1,0 +1,339 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>윤성수 한의원</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: single column, generous margins, one strong hero band, then quiet sections divided by hairlines. */
+:root {
+  --bg: #f6f4ef;
+  --surface: #ffffff;
+  --fg: #1f2a24;
+  --muted: #5d6b63;
+  --line: #e0dcd2;
+  --accent: #2f5d4a;
+  --accent-fg: #ffffff;
+  --accent-soft: #e4ece7;
+  --font-display: "Noto Serif KR", "Batang", serif;
+  --font-body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --max: 920px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141a17;
+    --surface: #1b231f;
+    --fg: #ece9e1;
+    --muted: #a3ada7;
+    --line: #2d3a34;
+    --accent: #8fbfa6;
+    --accent-fg: #101714;
+    --accent-soft: #22302a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141a17;
+  --surface: #1b231f;
+  --fg: #ece9e1;
+  --muted: #a3ada7;
+  --line: #2d3a34;
+  --accent: #8fbfa6;
+  --accent-fg: #101714;
+  --accent-soft: #22302a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+  overflow-x: hidden;
+}
+a { color: var(--accent); }
+.wrap { max-width: var(--max); margin: 0 auto; }
+
+/* Header */
+.top {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-block: 14px;
+  flex-wrap: wrap;
+}
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--fg);
+  text-decoration: none;
+}
+.top nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.top nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+.top nav a:hover, .top nav a:focus-visible { color: var(--fg); }
+
+/* Hero */
+.hero { padding-block: 72px 56px; }
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+.hero h1 {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 5.5vw, 3rem);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.lead {
+  margin: 0 0 28px;
+  color: var(--muted);
+  max-width: 34em;
+  font-size: 1.05rem;
+}
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  display: inline-block;
+  padding: 11px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Sections */
+section.block {
+  padding-block: 48px;
+  border-top: 1px solid var(--line);
+}
+section.block h2 {
+  margin: 0 0 24px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.profile {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+.profile h3 { margin: 0 0 10px; font-size: 1.15rem; }
+.profile ul { margin: 0; padding-left: 1.1em; color: var(--muted); }
+.profile li + li { margin-top: 4px; }
+
+.cards {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.card {
+  min-width: 0;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+.card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.note {
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.hours {
+  width: 100%;
+  max-width: 480px;
+  border-collapse: collapse;
+}
+.hours th, .hours td {
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+.hours th { font-weight: 500; width: 42%; color: var(--muted); }
+
+.address { margin: 0 0 8px; font-weight: 500; }
+.map {
+  margin-top: 16px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-soft);
+  color: var(--muted);
+  border-radius: 8px;
+  font-size: 0.92rem;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 10px;
+}
+.contact-row span.label { min-width: 3.5em; color: var(--muted); }
+.copy {
+  font: inherit;
+  font-size: 0.88rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--fg);
+  cursor: pointer;
+}
+.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+footer {
+  padding-block: 28px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+@media (min-width: 720px) {
+  .profile { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#top" class="brand">윤성수 한의원</a>
+    <nav aria-label="페이지 메뉴">
+      <a href="#about">원장 소개</a>
+      <a href="#services">진료 안내</a>
+      <a href="#hours">진료 시간</a>
+      <a href="#location">오시는 길</a>
+      <a href="#contact">연락처</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <div class="hero">
+    <p class="eyebrow">KOREAN MEDICINE CLINIC</p>
+    <h1>한의사 윤성수<br>한의원에 오신 것을 환영합니다</h1>
+    <p class="lead">환자분의 몸 상태를 세심하게 살피고, 편안하게 진료받으실 수 있도록 돕겠습니다.</p>
+    <div class="actions">
+      <a href="#location" class="btn">오시는 길</a>
+      <a href="#contact" class="btn ghost">연락처 보기</a>
+    </div>
+  </div>
+
+  <section id="about" class="block">
+    <h2>원장 소개</h2>
+    <div class="profile">
+      <div>
+        <h3>한의사 윤성수</h3>
+        <ul>
+          <li>학력 및 경력을 입력해 주세요.</li>
+          <li>전문 분야 및 진료 철학을 입력해 주세요.</li>
+          <li>학회 활동, 수상, 자격 사항을 입력해 주세요.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="block">
+    <h2>진료 안내</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>진료 과목 1</h3>
+        <p>진료 과목에 대한 간단한 설명을 입력해 주세요.</p>
+      </article>
+      <article class="card">
+        <h3>진료 과목 2</h3>
+        <p>진료 과목에 대한 간단한 설명을 입력해 주세요.</p>
+      </article>
+      <article class="card">
+        <h3>진료 과목 3</h3>
+        <p>진료 과목에 대한 간단한 설명을 입력해 주세요.</p>
+      </article>
+    </div>
+    <p class="note">※ 치료 결과는 개인에 따라 다를 수 있으며, 정확한 상담은 내원 진료를 통해 받으실 수 있습니다.</p>
+  </section>
+
+  <section id="hours" class="block">
+    <h2>진료 시간</h2>
+    <table class="hours">
+      <tbody>
+        <tr><th>월 – 금</th><td>00:00 – 00:00</td></tr>
+        <tr><th>토요일</th><td>00:00 – 00:00</td></tr>
+        <tr><th>일요일 · 공휴일</th><td>휴진</td></tr>
+        <tr><th>점심시간</th><td>00:00 – 00:00</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="location" class="block">
+    <h2>오시는 길</h2>
+    <p class="address">주소를 입력해 주세요.</p>
+    <p>지하철, 버스, 주차 안내를 입력해 주세요.</p>
+    <div class="map">지도 영역 (카카오맵 또는 네이버 지도 연결 예정)</div>
+  </section>
+
+  <section id="contact" class="block">
+    <h2>연락처</h2>
+    <p class="contact-row">
+      <span class="label">전화</span>
+      <span id="tel">000-0000-0000</span>
+      <button class="copy" type="button" data-copy="tel">번호 복사</button>
+    </p>
+    <p class="contact-row">
+      <span class="label">이메일</span>
+      <span id="mail">you@example.com</span>
+      <button class="copy" type="button" data-copy="mail">주소 복사</button>
+    </p>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>&copy; <span id="year"></span> 윤성수 한의원. All rights reserved.</p>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+document.querySelectorAll("[data-copy]").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var text = document.getElementById(btn.dataset.copy).textContent.trim();
+    var done = function () { btn.textContent = "복사됨"; setTimeout(function () { btn.textContent = btn.dataset.copy === "tel" ? "번호 복사" : "주소 복사"; }, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function () {});
+    }
+  });
+});
+</script>

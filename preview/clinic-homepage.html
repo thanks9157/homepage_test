@@ -2,46 +2,50 @@
 <title>윤성수 원장</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap">
 <style>
-/* Concept: Blue-bottle minimal. One deep blue as the only accent, wide white space,
-   a narrow reading column, and hairline dividers. The page reads top to bottom as one story:
-   the customer's own words, the doctor, the way of care, a light self-check, then a gentle invitation. */
+/* Concept: a quiet, product-led brand page in the spirit of a specialty coffee house.
+   Warm off-white ground, one soft blue accent used sparingly, large light type, generous
+   air, and very little copy per block. Images carry the atmosphere; words carry the meaning. */
 :root {
-  --bg: #ffffff;
-  --surface: #f4f7fb;
-  --fg: #15191f;
-  --muted: #5f6876;
-  --line: #e3e7ee;
-  --accent: #1d4f91;
-  --accent-soft: #e8eef8;
+  --bg: #f7f6f3;
+  --surface: #ffffff;
+  --fg: #16191e;
+  --muted: #6d7078;
+  --line: #e7e5e0;
+  --accent: #2b6cb0;
+  --accent-soft: #e9f1fa;
   --accent-fg: #ffffff;
+  --placeholder: #ebe9e4;
   --kakao: #fee500;
   --font: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-  --col: 680px;
+  --col: 640px;
+  --wide: 1040px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0d1420;
-    --surface: #152032;
-    --fg: #eef2f8;
-    --muted: #9aa6b8;
-    --line: #243247;
-    --accent: #7fa6e0;
-    --accent-soft: #18263d;
-    --accent-fg: #0d1420;
+    --bg: #101316;
+    --surface: #171b20;
+    --fg: #eceef1;
+    --muted: #9298a2;
+    --line: #262b32;
+    --accent: #8fb6e6;
+    --accent-soft: #1a2430;
+    --accent-fg: #101316;
+    --placeholder: #1d2227;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0d1420;
-  --surface: #152032;
-  --fg: #eef2f8;
-  --muted: #9aa6b8;
-  --line: #243247;
-  --accent: #7fa6e0;
-  --accent-soft: #18263d;
-  --accent-fg: #0d1420;
+  --bg: #101316;
+  --surface: #171b20;
+  --fg: #eceef1;
+  --muted: #9298a2;
+  --line: #262b32;
+  --accent: #8fb6e6;
+  --accent-soft: #1a2430;
+  --accent-fg: #101316;
+  --placeholder: #1d2227;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -50,321 +54,330 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font);
-  font-weight: 400;
+  font-weight: 300;
   font-size: 16px;
-  line-height: 1.85;
+  line-height: 1.9;
   -webkit-font-smoothing: antialiased;
-  padding-left: max(20px, env(safe-area-inset-left, 0px));
-  padding-right: max(20px, env(safe-area-inset-right, 0px));
-  padding-block: 0 48px;
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+  padding-block: 0 56px;
   overflow-x: hidden;
 }
 a { color: var(--accent); }
-.wrap { max-width: var(--col); margin: 0 auto; }
+.col { max-width: var(--col); margin: 0 auto; }
+.wide { max-width: var(--wide); margin: 0 auto; }
 
-/* Header: a single quiet line */
+/* Header: wordmark and a whisper of navigation */
 .top {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
   z-index: 5;
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
 }
-.top .wrap {
+.top .wide {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  padding-block: 16px;
+  padding-block: 20px;
 }
-.brand { font-weight: 500; letter-spacing: 0.02em; color: var(--fg); text-decoration: none; }
-.top nav { display: flex; gap: 18px; flex-wrap: wrap; }
-.top nav a { color: var(--muted); text-decoration: none; font-size: 0.86rem; }
-.top nav a:hover, .top nav a:focus-visible { color: var(--accent); }
+.brand { font-weight: 400; font-size: 1.05rem; letter-spacing: 0.04em; color: var(--fg); text-decoration: none; }
+.top nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.top nav a { color: var(--muted); text-decoration: none; font-size: 0.84rem; letter-spacing: 0.02em; }
+.top nav a:hover, .top nav a:focus-visible { color: var(--fg); }
 
-/* Hero */
-.hero { padding-block: 96px 80px; }
-.eyebrow {
-  margin: 0 0 24px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-}
+/* Hero: one line of meaning, one large image */
+.hero { padding-block: 72px 56px; }
+.eyebrow { margin: 0 0 28px; font-size: 0.78rem; letter-spacing: 0.12em; color: var(--muted); }
 .hero h1 {
-  margin: 0 0 28px;
-  font-weight: 500;
-  font-size: clamp(1.9rem, 5.4vw, 2.8rem);
-  line-height: 1.35;
-  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+  font-weight: 300;
+  font-size: clamp(2rem, 5.6vw, 3.1rem);
+  line-height: 1.32;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
-.hero .sub { margin: 0 0 20px; font-size: 1.04rem; color: var(--fg); max-width: 30em; }
-.hero .hint { margin: 0; color: var(--muted); max-width: 30em; font-size: 0.96rem; }
+.hero .sub { margin: 0; color: var(--muted); max-width: 26em; }
+.image-band {
+  margin-top: 56px;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  background: var(--placeholder);
+  border-radius: 2px;
+  display: flex;
+  align-items: flex-end;
+  padding: 18px 20px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
 
-/* Sections share one rhythm */
-section.block { padding-block: 72px; border-top: 1px solid var(--line); }
+/* Blocks: one idea each, separated by air rather than boxes */
+section.block { padding-block: 96px; }
 .label {
   display: block;
-  margin: 0 0 12px;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  margin: 0 0 16px;
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
   color: var(--accent);
 }
 section.block h2 {
-  margin: 0 0 28px;
-  font-weight: 500;
-  font-size: 1.6rem;
-  line-height: 1.4;
-  letter-spacing: -0.015em;
+  margin: 0 0 32px;
+  font-weight: 300;
+  font-size: 1.55rem;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
-/* Voices: the customer's own sentences */
-.voices { list-style: none; margin: 0; padding: 0; }
-.voices li {
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
-  color: var(--fg);
-}
-.voices li:first-child { border-top: 1px solid var(--line); }
-.voices li span { color: var(--muted); margin-right: 6px; }
-.bridge { margin: 32px 0 0; font-size: 1.05rem; font-weight: 500; }
+/* Voices: the customer's sentences, set large and quiet */
+.voices { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.voices li { font-size: 1.12rem; color: var(--fg); }
+.bridge { margin: 44px 0 0; font-size: 0.98rem; color: var(--muted); }
 
-/* About */
+/* About: image left, text right on wide screens */
+.about-grid { display: grid; gap: 40px; grid-template-columns: 1fr; align-items: start; }
+.portrait {
+  aspect-ratio: 4 / 5;
+  background: var(--placeholder);
+  border-radius: 2px;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
 .about p { margin: 0 0 18px; color: var(--fg); }
-.facts { margin: 36px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-.facts > div { display: grid; grid-template-columns: 96px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
-.facts dt { font-size: 0.86rem; color: var(--muted); font-weight: 500; }
-.facts dd { margin: 0; }
-.facts dd p { margin: 0 0 8px; }
+.facts { margin: 40px 0 0; padding: 0; }
+.facts > div { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
+.facts dt { font-size: 0.82rem; color: var(--muted); }
+.facts dd { margin: 0; font-size: 0.94rem; }
+.facts dd p { margin: 0 0 6px; }
 .facts dd p:last-child { margin-bottom: 0; }
-.facts small { display: block; color: var(--muted); font-size: 0.84rem; }
 .facts em { font-style: normal; color: var(--accent); }
 
-/* Philosophy */
-.principles { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.principles li { padding: 26px 0; border-bottom: 1px solid var(--line); }
-.principles li:first-child { border-top: 1px solid var(--line); }
-.principles h3 { margin: 0 0 6px; font-weight: 500; font-size: 1.08rem; }
-.principles p { margin: 0; color: var(--muted); }
+/* Philosophy: three short statements */
+.principles { list-style: none; margin: 0; padding: 0; display: grid; gap: 40px; }
+.principles h3 { margin: 0 0 8px; font-weight: 400; font-size: 1.05rem; }
+.principles p { margin: 0; color: var(--muted); font-size: 0.95rem; }
 
-/* Self-check */
-.check-intro { margin: 0 0 28px; color: var(--muted); }
-.check-group { margin: 0 0 28px; }
-.check-group h3 { margin: 0 0 10px; font-size: 0.9rem; font-weight: 500; color: var(--accent); letter-spacing: 0.04em; }
+/* Self-check: light chips, no heavy boxes */
+.check-intro { margin: 0 0 36px; color: var(--muted); font-size: 0.95rem; }
+.check-group { margin: 0 0 32px; }
+.check-group h3 { margin: 0 0 12px; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; color: var(--muted); }
 .check-group label {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 14px;
-  margin-bottom: 8px;
-  background: var(--surface);
-  border-radius: 6px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
   cursor: pointer;
+  font-size: 0.97rem;
 }
-.check-group input { width: 18px; height: 18px; margin: 0; accent-color: var(--accent); flex: none; }
+.check-group input { width: 16px; height: 16px; margin: 0; accent-color: var(--accent); flex: none; }
 .btn {
   display: inline-block;
-  padding: 13px 26px;
-  border: 1px solid var(--accent);
+  margin-top: 8px;
+  padding: 13px 30px;
+  border: 1px solid var(--fg);
   border-radius: 999px;
-  background: var(--accent);
-  color: var(--accent-fg);
+  background: transparent;
+  color: var(--fg);
   font: inherit;
-  font-weight: 500;
-  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   cursor: pointer;
 }
-.btn.ghost { background: transparent; color: var(--accent); }
+.btn:hover { background: var(--fg); color: var(--bg); }
 .btn:focus-visible, .kakao-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.result {
-  margin-top: 28px;
-  padding: 24px;
-  background: var(--accent-soft);
-  border-radius: 8px;
-}
+.result { margin-top: 36px; padding: 26px; background: var(--accent-soft); border-radius: 2px; }
 .result[hidden] { display: none; }
-.result p { margin: 0 0 14px; }
-.result .privacy { font-size: 0.86rem; color: var(--muted); margin-bottom: 0; }
+.result p { margin: 0 0 12px; }
+.result .privacy { font-size: 0.84rem; color: var(--muted); margin-bottom: 0; }
 
 /* Column */
-.column-box p { margin: 0 0 22px; max-width: 32em; color: var(--fg); }
+.column-box p { margin: 0 0 28px; max-width: 30em; }
 .kakao-btn {
   display: inline-block;
-  padding: 13px 26px;
+  padding: 13px 30px;
   border-radius: 999px;
   background: var(--kakao);
   color: #191919;
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: none;
 }
-.small { margin-top: 14px; font-size: 0.84rem; color: var(--muted); }
+.small { margin-top: 16px; font-size: 0.82rem; color: var(--muted); }
 
 /* Footer */
-footer {
-  padding-block: 40px 0;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 0.84rem;
-}
+footer { padding-block: 48px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.82rem; }
 footer p { margin: 0 0 8px; }
 
+@media (min-width: 720px) {
+  .about-grid { grid-template-columns: 5fr 7fr; gap: 64px; }
+  .principles { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .hero { padding-block: 120px 80px; }
+}
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; scroll-behavior: auto !important; }
 }
 @media (max-width: 600px) {
-  .hero { padding-block: 64px 56px; }
-  section.block { padding-block: 56px; }
-  .facts > div { grid-template-columns: 1fr; gap: 6px; }
-  .top nav { gap: 12px; }
+  .hero { padding-block: 56px 40px; }
+  section.block { padding-block: 72px; }
+  .facts > div { grid-template-columns: 1fr; gap: 4px; }
+  .top nav { gap: 14px; }
 }
 </style>
 
 <header class="top">
-  <div class="wrap">
+  <div class="wide">
     <a href="#top" class="brand">윤성수</a>
     <nav aria-label="페이지 메뉴">
-      <a href="#about">원장 소개</a>
-      <a href="#philosophy">진료 철학</a>
-      <a href="#check">상태 점검</a>
+      <a href="#about">원장</a>
+      <a href="#philosophy">철학</a>
+      <a href="#check">점검</a>
       <a href="#column">칼럼</a>
     </nav>
   </div>
 </header>
 
-<main id="top" class="wrap">
+<main id="top">
 
-  <div class="hero">
-    <p class="eyebrow">몸과 마음을 함께 살피는 내과 · 개원 준비 중</p>
-    <h1>검사에서는 괜찮다고 하는데,<br>몸과 마음은 왜 이렇게 힘들까요?</h1>
-    <p class="sub">이유를 알 수 없는 피로, 불면, 소화불량 같은 불편을 몸과 마음을 함께 살펴보는 내과를 준비하고 있습니다.</p>
-    <p class="hint">건강검진 결과에 이상이 없어도 계속 지치는 날이 있다면, 그 이야기부터 함께 정리해 봐요.</p>
+  <div class="hero wide">
+    <div class="col">
+      <p class="eyebrow">몸과 마음을 함께 살피는 내과 · 개원 준비 중</p>
+      <h1>검사에서는 괜찮다고 하는데,<br>몸과 마음은 왜 이렇게 힘들까요?</h1>
+      <p class="sub">이유를 알 수 없는 피로, 불면, 소화불량. 그 이야기부터 천천히 듣겠습니다.</p>
+    </div>
+    <div class="image-band" role="img" aria-label="진료실 사진 자리">진료실 사진 준비 중</div>
   </div>
 
-  <section class="block" aria-labelledby="voice-title">
-    <span class="label">이런 이야기, 들어보셨나요</span>
-    <h2 id="voice-title">병원에서는 정상이라는데<br>왜 나만 이렇게 힘들까요</h2>
-    <ul class="voices">
-      <li><span>“</span>검사는 다 괜찮대요. 그런데 왜 이렇게 피곤하죠?</li>
-      <li><span>“</span>잠은 잤는데 아침에도 개운하지가 않아요.</li>
-      <li><span>“</span>밥만 먹으면 속이 더부룩해서 자꾸 조심하게 돼요.</li>
-    </ul>
-    <p class="bridge">그 이야기, 끝까지 들어 보겠습니다.</p>
-  </section>
+  <div class="col">
 
-  <section id="about" class="block about">
-    <span class="label">원장 소개</span>
-    <h2>윤성수</h2>
-    <p>의사는 수치보다 사람을 먼저 봐야 한다고 생각합니다. 영화 <em>패치 아담스</em>를 보고 의료인의 길이 얼마나 사람과 가까운지 느꼈고, 그 마음으로 한의사가 되었습니다.</p>
-    <p>이후 암 환자를 진료하며 어려운 질환일수록 몸 전체와 일상을 함께 보는 시선이 얼마나 중요한지 배웠습니다. 지금도 그 원칙을 진료의 기준으로 삼고 있습니다.</p>
+    <section class="block" aria-labelledby="voice-title">
+      <span class="label">이런 이야기</span>
+      <h2 id="voice-title">병원에서는 정상이라는데,<br>왜 나만 이렇게 힘들까요</h2>
+      <ul class="voices">
+        <li>“검사는 다 괜찮대요. 그런데 왜 이렇게 피곤하죠?”</li>
+        <li>“잠은 잤는데 아침에도 개운하지가 않아요.”</li>
+        <li>“밥만 먹으면 속이 더부룩해서 자꾸 조심하게 돼요.”</li>
+      </ul>
+      <p class="bridge">그 이야기, 끝까지 들어 보겠습니다.</p>
+    </section>
 
-    <dl class="facts">
-      <div>
-        <dt>전문 과목</dt>
-        <dd><p>한방내과 전문의</p></dd>
-      </div>
-      <div>
-        <dt>학력</dt>
-        <dd>
-          <p>경희대학교 한의학과 학사</p>
-          <p>차의과대학교 통합의학 석사</p>
-          <p>차의과대학교 정보의학 박사 (이학박사)</p>
-        </dd>
-      </div>
-      <div>
-        <dt>경력</dt>
-        <dd>
-          <p>강동경희대학교 한방병원 한방암센터 한방내과 전문수련의</p>
-          <p>경남 의령군 보건소 한방과장 · 코로나19 역학조사관</p>
-          <p>선운한방병원 진료과장</p>
-          <p>경희정도한방병원 진료원장</p>
-          <p>백세한방병원 진료원장 <em>· 현재</em></p>
-        </dd>
-      </div>
-      <div>
-        <dt>자격 및 활동</dt>
-        <dd>
-          <p>〈암 증상 완화 한의표준임상진료지침〉 집필위원</p>
-          <p>한방내과학회 정회원 · 통합암학회 인정의</p>
-          <p>국제 요가 지도자 자격 (RYT200)</p>
-        </dd>
-      </div>
-      <div>
-        <dt>연구</dt>
-        <dd>
-          <p>암 환자의 수면, 영양, 삶의 질과 생활 관리에 관한 연구를 국내외 학술지와 학회에서 꾸준히 발표해 왔습니다.</p>
-        </dd>
-      </div>
-    </dl>
-  </section>
+    <section id="about" class="block">
+      <span class="label">원장</span>
+      <div class="about-grid">
+        <div class="portrait" role="img" aria-label="원장 사진 자리">원장 사진 준비 중</div>
+        <div class="about">
+          <h2>윤성수</h2>
+          <p>의사는 수치보다 사람을 먼저 봐야 한다고 생각합니다. 영화 <em>패치 아담스</em>를 보고 의료인의 길이 얼마나 사람과 가까운지 느꼈고, 그 마음으로 한의사가 되었습니다.</p>
+          <p>암 환자를 진료하며 어려운 질환일수록 몸 전체와 일상을 함께 보는 시선이 중요하다는 것을 배웠습니다. 지금도 그 원칙을 진료의 기준으로 삼고 있습니다.</p>
 
-  <section id="philosophy" class="block">
-    <span class="label">진료 철학</span>
-    <h2>진료실에서 드리는 약속</h2>
-    <ul class="principles">
-      <li>
-        <h3>수치보다 지금의 나를 먼저 듣습니다</h3>
-        <p>검사에 잡히지 않는 피로와 불편도 생활 속 이야기로 충분히 살펴봅니다.</p>
-      </li>
-      <li>
-        <h3>몸, 생활, 마음은 이어져 있다고 봅니다</h3>
-        <p>식사와 수면, 긴장과 휴식이 몸의 불편과 어떻게 맞닿아 있는지 함께 정리합니다.</p>
-      </li>
-      <li>
-        <h3>이해될 때까지 설명합니다</h3>
-        <p>무엇을 확인했고 왜 그런 방법을 권하는지, 궁금한 점이 남지 않도록 설명드립니다.</p>
-      </li>
-    </ul>
-  </section>
-
-  <section id="check" class="block">
-    <span class="label">내 상태 점검</span>
-    <h2>요즘 내 몸과 마음,<br>어떤 상태일까요</h2>
-    <p class="check-intro">가볍게 체크해 보세요. 결과는 화면에서만 보이고 저장되지 않습니다. 진단이 아니라, 생각을 정리하는 도구입니다.</p>
-
-    <form id="check-form" onsubmit="return false;">
-      <div class="check-group">
-        <h3>몸</h3>
-        <label><input type="checkbox" name="body" value="1"> 자고 일어나도 개운하지 않다</label>
-        <label><input type="checkbox" name="body" value="2"> 이유 없이 자주 지치고 기운이 없다</label>
-        <label><input type="checkbox" name="body" value="3"> 식사 후 속이 더부룩하거나 불편하다</label>
+          <dl class="facts">
+            <div>
+              <dt>전문 과목</dt>
+              <dd><p>한방내과 전문의</p></dd>
+            </div>
+            <div>
+              <dt>학력</dt>
+              <dd>
+                <p>경희대학교 한의학과 학사</p>
+                <p>차의과대학교 통합의학 석사</p>
+                <p>차의과대학교 정보의학 박사</p>
+              </dd>
+            </div>
+            <div>
+              <dt>경력</dt>
+              <dd>
+                <p>강동경희대학교 한방병원 한방암센터 한방내과 전문수련의</p>
+                <p>백세한방병원 진료원장 <em>· 현재</em></p>
+              </dd>
+            </div>
+            <div>
+              <dt>자격 및 활동</dt>
+              <dd>
+                <p>〈암 증상 완화 한의표준임상진료지침〉 집필위원</p>
+                <p>한방내과학회 정회원 · 통합암학회 인정의</p>
+              </dd>
+            </div>
+            <div>
+              <dt>연구</dt>
+              <dd>
+                <p>암 환자의 수면, 영양, 삶의 질과 생활 관리에 관한 연구를 국내외 학술지와 학회에서 발표해 왔습니다.</p>
+              </dd>
+            </div>
+          </dl>
+        </div>
       </div>
-      <div class="check-group">
-        <h3>생활</h3>
-        <label><input type="checkbox" name="life" value="1"> 잠들기 어렵거나 자주 깬다</label>
-        <label><input type="checkbox" name="life" value="2"> 식사 시간이 불규칙하다</label>
-        <label><input type="checkbox" name="life" value="3"> 쉬어도 피로가 잘 풀리지 않는다</label>
+    </section>
+
+    <section id="philosophy" class="block">
+      <span class="label">철학</span>
+      <h2>진료실에서 드리는 약속</h2>
+      <ul class="principles">
+        <li>
+          <h3>수치보다 지금의 나를 먼저 듣습니다</h3>
+          <p>검사에 잡히지 않는 불편도 생활 속 이야기로 충분히 살펴봅니다.</p>
+        </li>
+        <li>
+          <h3>몸, 생활, 마음은 이어져 있습니다</h3>
+          <p>식사와 수면, 긴장과 휴식이 몸의 불편과 어떻게 맞닿아 있는지 함께 정리합니다.</p>
+        </li>
+        <li>
+          <h3>이해될 때까지 설명합니다</h3>
+          <p>무엇을 확인했고 왜 그런 방법을 권하는지, 궁금한 점이 남지 않도록 설명드립니다.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="check" class="block">
+      <span class="label">점검</span>
+      <h2>요즘 몸과 마음,<br>어떤 상태일까요</h2>
+      <p class="check-intro">가볍게 체크해 보세요. 결과는 화면에서만 보이고 저장되지 않습니다. 진단이 아니라, 생각을 정리하는 도구입니다.</p>
+
+      <form id="check-form" onsubmit="return false;">
+        <div class="check-group">
+          <h3>몸</h3>
+          <label><input type="checkbox" name="body" value="1"> 자고 일어나도 개운하지 않다</label>
+          <label><input type="checkbox" name="body" value="2"> 이유 없이 자주 지치고 기운이 없다</label>
+          <label><input type="checkbox" name="body" value="3"> 식사 후 속이 더부룩하거나 불편하다</label>
+        </div>
+        <div class="check-group">
+          <h3>생활</h3>
+          <label><input type="checkbox" name="life" value="1"> 잠들기 어렵거나 자주 깬다</label>
+          <label><input type="checkbox" name="life" value="2"> 식사 시간이 불규칙하다</label>
+          <label><input type="checkbox" name="life" value="3"> 쉬어도 피로가 잘 풀리지 않는다</label>
+        </div>
+        <div class="check-group">
+          <h3>마음</h3>
+          <label><input type="checkbox" name="mind" value="1"> 이유 없이 걱정이 많아진다</label>
+          <label><input type="checkbox" name="mind" value="2"> 의욕이 떨어지고 무기력하다</label>
+          <label><input type="checkbox" name="mind" value="3"> 긴장이 풀리지 않는 날이 많다</label>
+        </div>
+        <button type="button" class="btn" id="check-btn">결과 보기</button>
+      </form>
+
+      <div id="result" class="result" hidden aria-live="polite">
+        <p id="result-text"></p>
+        <p class="privacy">이 결과는 진단이 아니며 어디에도 저장되지 않습니다.</p>
       </div>
-      <div class="check-group">
-        <h3>마음</h3>
-        <label><input type="checkbox" name="mind" value="1"> 이유 없이 걱정이 많아진다</label>
-        <label><input type="checkbox" name="mind" value="2"> 의욕이 떨어지고 무기력하다</label>
-        <label><input type="checkbox" name="mind" value="3"> 긴장이 풀리지 않는 날이 많다</label>
+    </section>
+
+    <section id="column" class="block">
+      <span class="label">칼럼</span>
+      <h2>격주로 전하는 생활 메모</h2>
+      <div class="column-box">
+        <p>피로, 수면, 소화처럼 생활 속에서 바로 살펴볼 수 있는 이야기를 보내드립니다. 오늘 바로 해볼 수 있는 작은 습관 위주로 씁니다.</p>
+        <a href="#" class="kakao-btn" id="kakao-link">카카오톡 채널로 칼럼 받기</a>
+        <p class="small">채널 친구 추가로 칼럼을 받으실 수 있으며, 언제든 차단하거나 나갈 수 있습니다. 채널 주소는 개설 후 연결됩니다.</p>
       </div>
-      <button type="button" class="btn" id="check-btn">결과 보기</button>
-    </form>
+    </section>
 
-    <div id="result" class="result" hidden aria-live="polite">
-      <p id="result-text"></p>
-      <p class="privacy">이 결과는 진단이 아니며 어디에도 저장되지 않습니다.</p>
-    </div>
-  </section>
-
-  <section id="column" class="block">
-    <span class="label">생활 칼럼</span>
-    <h2>격주로 전하는 생활 메모</h2>
-    <div class="column-box">
-      <p>피로, 수면, 소화처럼 생활 속에서 바로 살펴볼 수 있는 이야기를 격주로 보내드립니다. 오늘 바로 해볼 수 있는 작은 습관 위주로 씁니다.</p>
-      <a href="#" class="kakao-btn" id="kakao-link">카카오톡 채널로 칼럼 받기</a>
-      <p class="small">채널 친구 추가로 칼럼을 받으실 수 있으며, 언제든 차단하거나 나갈 수 있습니다. 채널 주소는 개설 후 연결됩니다.</p>
-    </div>
-  </section>
-
+  </div>
 </main>
 
-<footer class="wrap">
+<footer class="wide">
   <p>현재 부산넥스트한방병원에서 진료 중입니다.</p>
   <p>개원 준비 중인 개인 페이지입니다. 진료 안내와 예약 정보는 개원 후 제공됩니다.</p>
   <p>이 페이지의 내용은 의학적 진단이나 치료 효과를 보장하지 않습니다.</p>

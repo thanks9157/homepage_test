@@ -183,6 +183,7 @@ footer p { margin: 0 0 8px; }
 
 @media (min-width: 720px) {
   .about-grid { grid-template-columns: 5fr 7fr; gap: 64px; }
+  .about-grid--text { grid-template-columns: 1fr; }
   .principles { grid-template-columns: repeat(3, 1fr); gap: 32px; }
   .hero { padding-block: 120px 80px; }
 }
@@ -246,18 +247,7 @@ footer p { margin: 0 0 8px; }
 
     <section id="about" class="block">
       <span class="label">원장</span>
-      <div class="about-grid">
-        <figure class="visual" style="margin:0">
-          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="동심원처럼 번지는 호흡을 표현한 추상 이미지">
-            <rect width="400" height="500" fill="#e9f1fa"/>
-            <circle cx="200" cy="250" r="40" fill="#2b6cb0" fill-opacity="0.55"/>
-            <circle cx="200" cy="250" r="80" fill="none" stroke="#2b6cb0" stroke-opacity="0.45" stroke-width="2"/>
-            <circle cx="200" cy="250" r="125" fill="none" stroke="#2b6cb0" stroke-opacity="0.3" stroke-width="2"/>
-            <circle cx="200" cy="250" r="175" fill="none" stroke="#2b6cb0" stroke-opacity="0.18" stroke-width="2"/>
-            <path d="M0 400 C 100 370, 300 430, 400 390 V500 H0Z" fill="#c9dcf1"/>
-          </svg>
-          <figcaption>호흡</figcaption>
-        </figure>
+      <div class="about-grid about-grid--text">
         <div class="about">
           <h2>윤성수</h2>
           <p>의사는 수치보다 사람을 먼저 봐야 한다고 생각합니다. 영화 <em>패치 아담스</em>를 보고 의료인의 길이 얼마나 사람과 가까운지 느꼈고, 그 마음으로 한의사가 되었습니다.</p>

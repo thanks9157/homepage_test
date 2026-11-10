@@ -362,7 +362,7 @@ footer p { margin: 0 0 8px; }
       <dl class="facts" style="margin:40px 0 24px">
         <div>
           <dt>한약</dt>
-          <dd><p>개인의 특성과 증상에 맞춰 세심하게 처방합니다. 경희대 한방내과 전문의로 난이도 높은 환자를 진료하며 풍부한 한약 처방 경험을 갖출 있습니다.</p></dd>
+          <dd><p>개인의 특성과 증상에 맞춰 세심하게 처방합니다. 경희대 한방내과 전문의로 난이도 높은 환자를 진료하며 풍부한 한약 처방 경험을 갖추고 있습니다.</p></dd>
         </div>
         <div>
           <dt>침·뜸</dt>
@@ -484,19 +484,6 @@ document.getElementById("year").textContent = new Date().getFullYear();
     body: "두통이나 손발 저림 같은 몸의 신호가 자주 체크되셨어요. 언제 생기는지 함께 이야기해 볼 만합니다.",
     mind: "긴장이나 무기력 같은 마음의 상태가 체크되셨어요. 몸의 불편과 함께 이야기해 볼 만한 부분입니다."
   };
-  var detail = {
-    sleep1: "쉬어도 피로가 풍리지 않고 기운이 없다면, 몸의 에너지 리듬이 흐들린 신호일 수 있어요. 생활 리듬과 함께 살펴볼 만합니다.",
-    sleep2: "잠의 질이 떨어지면 낮의 피로와 예민함으로 이어지기 쉬워요. 잠들기 전 습관부터 함께 돌아볼 수 있습니다.",
-    digest1: "식후 더부룩함은 먹는 양과 속도, 스트레스와 함께 살펴볼 부분이 많아요.",
-    digest2: "식사 리듬이 흔들리면 소화와 에너지 모두에 영향을 줌 수 있어요.",
-    digest3: "식욕 변화는 몸 상태를 알려 주는 중요한 신호예요. 최근 변화를 함께 이야기해 보시면 좋겠습니다.",
-    body1: "두통은 긴장, 수면, 식사 등 여러 요소와 이어지기도 해요. 언제, 어떤 때 생기는지 함께 정리해 볼 수 있습니다.",
-    body2: "손발의 저림이나 냉감은 혈류와 긴장, 생활 습관과 함께 볼 수 있어요. 빈도와 시간대를 함께 이야기해 주세요.",
-    mind1: "마음의 긴장은 몸의 피로와 수면으로 이어지기 쉬워요. 걱정이 생기는 흐름을 함께 살펴볼 수 있습니다.",
-    mind2: "의욕 저하가 오래가면 일상 전체가 무겁게 느껔질 수 있어요. 언제부터 그랬는지 함께 돌아보면 좋겠습니다.",
-    mind3: "긴장이 쌌이면 근육과 소화, 잠에도 영향을 줍니다. 긴장을 풀 수 있는 생활 방법도 함께 찾아봐요."
-  };
-
   document.getElementById("check-btn").addEventListener("click", function () {
     var counts = { sleep: 0, digest: 0, body: 0, mind: 0 };
     document.querySelectorAll("#check-form input[type=checkbox]").forEach(function (cb) {
@@ -514,10 +501,10 @@ document.getElementById("year").textContent = new Date().getFullYear();
     list.innerHTML = "";
     document.querySelectorAll("#check-form input[type=checkbox]:checked").forEach(function (cb) {
       var li = document.createElement("li");
-      li.textContent = detail[cb.name + cb.value];
+      li.textContent = cb.parentNode.textContent.trim();
       list.appendChild(li);
     });
-    document.getElementById("result-text").textContent = total === 0 ? text : "체크하신 항목에 맞춰, 이런 부분을 함께 살펴볼 수 있어요.";
+    document.getElementById("result-text").textContent = total === 0 ? text : "체크하신 " + total + "가지 증상은 방치하지 않고 치료가 필요합니다. 한 가지씩 따로 보기보다 함께 살펴, 맞춤으로 치료를 시작하시는 것을 권합니다.";
     document.getElementById("result").hidden = false;
   });
 

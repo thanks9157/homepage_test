@@ -540,7 +540,17 @@ document.getElementById("year").textContent = new Date().getFullYear();
       summary += groups.map(function (g) { return care[g]; }).join(" ");
       summary += " 상담에서 원장이 직접 확인하고, 지금 상태에 맞는 치료 순서를 함께 정해 드릴게요.";
     }
-    document.getElementById("result-text").textContent = summary;
+    var tier;
+    if (total === 0) {
+      tier = "";
+    } else if (total <= 2) {
+      tier = "10개 중 " + total + "개가 체크되셨어요. 초기 신호로 보일 수 있는 단계라서, 지금 살펴보시면 생활 속에서 조절하기 수월한 시기입니다.";
+    } else if (total <= 5) {
+      tier = "10개 중 " + total + "개가 체크되셨어요. 여러 신호가 함께 보이고 있어서, 미루지 않고 진료에서 함께 살펴보시는 것을 권합니다.";
+    } else {
+      tier = "10개 중 " + total + "개가 체크되셨어요. 여러 증상이 겹쳐 나타나고 있어서, 한두 가지만 따로 보기보다 전체를 함께 살피는 진료가 필요해 보입니다. 가능한 빨리 상담으로 확인해 보세요.";
+    }
+    document.getElementById("result-text").textContent = tier ? tier + " " + summary : summary;
     document.getElementById("result").hidden = false;
   });
 

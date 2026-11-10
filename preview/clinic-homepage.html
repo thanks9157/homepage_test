@@ -210,7 +210,7 @@ footer p { margin: 0 0 8px; }
       <a href="#about">의료진</a>
       <a href="#philosophy">철학</a>
       <a href="#approach">진료 방식</a>
-      <a href="#check">점검</a>
+      <a href="#check">자가점검</a>
       <a href="#booking">예약</a>
       <a href="#column">칼럼</a>
     </nav>
@@ -356,25 +356,26 @@ footer p { margin: 0 0 8px; }
     </section>
 
     <section id="check" class="block">
-      <span class="label">점검</span>
+      <span class="label">자가점검</span>
       <h2>요즘 몸과 마음,<br>어떤 상태일까요</h2>
       <p class="check-intro">가볍게 체크해 보세요. 결과는 화면에서만 보이고 저장되지 않습니다. 진단이 아니라, 생각을 정리하는 도구입니다.</p>
 
       <form id="check-form" onsubmit="return false;">
         <div class="check-group">
-          <h3>몸</h3>
-          <label><input type="checkbox" name="body" value="1"> 자고 일어나도 개운하지 않다</label>
-          <label><input type="checkbox" name="body" value="2"> 이유 없이 자주 지치고 기운이 없다</label>
-          <label><input type="checkbox" name="body" value="3"> 두통이 잦거나 머리가 무겁다</label>
-          <label><input type="checkbox" name="body" value="4"> 식사 후 속이 더부룩하거나 불편하다</label>
-          <label><input type="checkbox" name="body" value="5"> 손발이 저리거나 차갑다</label>
-          <label><input type="checkbox" name="body" value="6"> 입맛이 떨어지고 식욕이 줄었다</label>
+          <h3>피로와 수면</h3>
+          <label><input type="checkbox" name="sleep" value="1"> 쉬어도 피로가 풀리지 않고, 기운이 없다</label>
+          <label><input type="checkbox" name="sleep" value="2"> 잠들기 어렵거나 자주 깬다</label>
         </div>
         <div class="check-group">
-          <h3>생활</h3>
-          <label><input type="checkbox" name="life" value="1"> 잠들기 어렵거나 자주 깬다</label>
-          <label><input type="checkbox" name="life" value="2"> 식사 시간이 불규칙하다</label>
-          <label><input type="checkbox" name="life" value="3"> 쉬어도 피로가 잘 풀리지 않는다</label>
+          <h3>소화와 식사</h3>
+          <label><input type="checkbox" name="digest" value="1"> 식사 후 속이 더부룩하거나 불편하다</label>
+          <label><input type="checkbox" name="digest" value="2"> 식사 시간이 불규칙하다</label>
+          <label><input type="checkbox" name="digest" value="3"> 입맛이 떨어지고 식욕이 줄었다</label>
+        </div>
+        <div class="check-group">
+          <h3>통증과 감각</h3>
+          <label><input type="checkbox" name="body" value="1"> 두통이 잦거나 머리가 무겁다</label>
+          <label><input type="checkbox" name="body" value="2"> 손발이 저리거나 차갑다</label>
         </div>
         <div class="check-group">
           <h3>마음</h3>
@@ -452,16 +453,17 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 (function () {
   var msg = {
-    body: "몸의 피로나 소화, 두통 같은 불편이 자주 체크되셨어요. 생활 패턴과 함께 살펴볼 부분이 있을 수 있습니다.",
-    life: "수면이나 식사, 휴식 같은 생활 리듬이 체크되셨어요. 하루 루틴을 함께 돌아보면 좋겠습니다.",
+    sleep: "피로와 수면 쪽이 자주 체크되셨어요. 잠과 쉬는 리듬을 함께 돌아보면 좋겠습니다.",
+    digest: "소화와 식사 쪽이 자주 체크되셨어요. 먹는 리듬과 몸의 반응을 함께 살펴볼 부분이 있습니다.",
+    body: "두통이나 손발 저림 같은 몸의 신호가 자주 체크되셨어요. 언제 생기는지 함께 이야기해 볼 만합니다.",
     mind: "긴장이나 무기력 같은 마음의 상태가 체크되셨어요. 몸의 불편과 함께 이야기해 볼 만한 부분입니다."
   };
   document.getElementById("check-btn").addEventListener("click", function () {
-    var counts = { body: 0, life: 0, mind: 0 };
+    var counts = { sleep: 0, digest: 0, body: 0, mind: 0 };
     document.querySelectorAll("#check-form input[type=checkbox]").forEach(function (cb) {
       if (cb.checked) counts[cb.name] += 1;
     });
-    var total = counts.body + counts.life + counts.mind;
+    var total = counts.sleep + counts.digest + counts.body + counts.mind;
     var text;
     if (total === 0) {
       text = "지금은 특별히 체크된 항목이 없어요. 그래도 몸과 마음이 계속 지친다면 칼럼으로 생활 리듬을 천천히 돌아보셔도 좋습니다.";

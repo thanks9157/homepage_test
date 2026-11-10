@@ -159,7 +159,29 @@ section.block h2 {
   cursor: pointer;
   font-size: 1.06rem;
 }
-.check-group input { width: 16px; height: 16px; margin: 0; accent-color: var(--accent); flex: none; }
+.check-group input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex: none;
+  border: 1.5px solid var(--muted);
+  border-radius: 4px;
+  background: transparent;
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+}
+.check-group input:checked { background: var(--accent); border-color: var(--accent); }
+.check-group input:checked::after {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border: solid var(--accent-fg);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
 .btn {
   display: inline-block;
   margin-top: 8px;
@@ -177,6 +199,8 @@ section.block h2 {
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .result { margin-top: 36px; padding: 26px; background: var(--accent-soft); border-radius: 2px; }
 .result[hidden] { display: none; }
+.result-list { margin: 0 0 18px; padding-left: 1.2em; }
+.result-list li { margin-bottom: 8px; }
 .result p { margin: 0 0 12px; }
 .result .privacy { font-size: 0.95rem; color: var(--muted); margin-bottom: 0; }
 
@@ -388,7 +412,9 @@ footer p { margin: 0 0 8px; }
 
       <div id="result" class="result" hidden aria-live="polite">
         <p id="result-text"></p>
+        <ul id="result-list" class="result-list"></ul>
         <p class="privacy">이 결과는 진단이 아니며 어디에도 저장되지 않습니다.</p>
+        <p><a href="#booking">예약 안내 보기</a></p>
       </div>
     </section>
 
@@ -458,6 +484,19 @@ document.getElementById("year").textContent = new Date().getFullYear();
     body: "두통이나 손발 저림 같은 몸의 신호가 자주 체크되셨어요. 언제 생기는지 함께 이야기해 볼 만합니다.",
     mind: "긴장이나 무기력 같은 마음의 상태가 체크되셨어요. 몸의 불편과 함께 이야기해 볼 만한 부분입니다."
   };
+  var detail = {
+    sleep1: "쉬어도 피로가 풍리지 않고 기운이 없다면, 몸의 에너지 리듬이 흐들린 신호일 수 있어요. 생활 리듬과 함께 살펴볼 만합니다.",
+    sleep2: "잠의 질이 떨어지면 낮의 피로와 예민함으로 이어지기 쉬워요. 잠들기 전 습관부터 함께 돌아볼 수 있습니다.",
+    digest1: "식후 더부룩함은 먹는 양과 속도, 스트레스와 함께 살펴볼 부분이 많아요.",
+    digest2: "식사 리듬이 흔들리면 소화와 에너지 모두에 영향을 줌 수 있어요.",
+    digest3: "식욕 변화는 몸 상태를 알려 주는 중요한 신호예요. 최근 변화를 함께 이야기해 보시면 좋겠습니다.",
+    body1: "두통은 긴장, 수면, 식사 등 여러 요소와 이어지기도 해요. 언제, 어떤 때 생기는지 함께 정리해 볼 수 있습니다.",
+    body2: "손발의 저림이나 냉감은 혈류와 긴장, 생활 습관과 함께 볼 수 있어요. 빈도와 시간대를 함께 이야기해 주세요.",
+    mind1: "마음의 긴장은 몸의 피로와 수면으로 이어지기 쉬워요. 걱정이 생기는 흐름을 함께 살펴볼 수 있습니다.",
+    mind2: "의욕 저하가 오래가면 일상 전체가 무겁게 느껔질 수 있어요. 언제부터 그랬는지 함께 돌아보면 좋겠습니다.",
+    mind3: "긴장이 쌌이면 근육과 소화, 잠에도 영향을 줍니다. 긴장을 풀 수 있는 생활 방법도 함께 찾아봐요."
+  };
+
   document.getElementById("check-btn").addEventListener("click", function () {
     var counts = { sleep: 0, digest: 0, body: 0, mind: 0 };
     document.querySelectorAll("#check-form input[type=checkbox]").forEach(function (cb) {
@@ -471,7 +510,14 @@ document.getElementById("year").textContent = new Date().getFullYear();
       var top = Object.keys(counts).reduce(function (a, b) { return counts[a] >= counts[b] ? a : b; });
       text = msg[top] + " (체크 " + total + "개)";
     }
-    document.getElementById("result-text").textContent = text;
+    var list = document.getElementById("result-list");
+    list.innerHTML = "";
+    document.querySelectorAll("#check-form input[type=checkbox]:checked").forEach(function (cb) {
+      var li = document.createElement("li");
+      li.textContent = detail[cb.name + cb.value];
+      list.appendChild(li);
+    });
+    document.getElementById("result-text").textContent = total === 0 ? text : "체크하신 항목에 맞춰, 이런 부분을 함께 살펴볼 수 있어요.";
     document.getElementById("result").hidden = false;
   });
 

@@ -112,6 +112,7 @@ section.block h2 {
 .voices { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
 .voices li { font-size: 1.22rem; color: var(--fg); }
 .bridge { margin: 44px 0 0; font-size: 1.08rem; color: var(--muted); }
+section.block.voices-block { padding-top: 40px; }
 
 /* About */
 .about p { margin: 0 0 18px; color: var(--fg); }
@@ -266,9 +267,7 @@ footer p { margin: 0 0 8px; }
 
   <div class="col">
 
-    <section class="block" aria-labelledby="voice-title">
-      <span class="label">혹시, 이런 적 있으신가요</span>
-      <h2 id="voice-title">병원에서는 정상이라는데,<br>왜 나만 이렇게 힘들까요</h2>
+    <section class="block voices-block" aria-label="고객의 이야기">
       <ul class="voices">
         <li>“검사는 다 괜찮대요. 그런데 왜 이렇게 피곤하죠?”</li>
         <li>“잠은 잤는데 아침에도 개운하지가 않아요.”</li>
